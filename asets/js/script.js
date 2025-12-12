@@ -2,33 +2,27 @@
    1. DATOS Y VARIABLES GLOBALES
 -----------------------------------------------------------*/
 
-const productosNuevos = [
-    { id: 1, nombre: "Lavanda", preco: 8500000, talle: ["XS", "S", "M", "L", "XL"], imagen: "./asets/images/ropa-2.jpg", categoria: "Vestidos", estoque: 12 },
-    { id: 2, nombre: "Camisa Colibrí", preco: 6590000, talle: ["S", "M", "L"], imagen: "./asets/images/ropa-2.jpg", categoria: "Camisas", estoque: 8 },
-    { id: 3, nombre: "Blusa Diente de León", preco: 6990000, talle: ["XS", "S", "M", "L"], imagen: "./asets/images/ropa-2.jpg", categoria: "Blusas", estoque: 15 },
-    { id: 4, nombre: "Conjunto Cala", preco: 9990000, talle: ["S", "M", "L", "XL"], imagen: "./asets/images/ropa-2.jpg", categoria: "Conjuntos", estoque: 5 }
-];
-
 let carrito = JSON.parse(localStorage.getItem("carritoEcommerce")) || [];
 
-const contenedorProductos = document.getElementById("contenedor-productos-nuevos");
-const listaCarrinho = document.getElementById("lista-carrito");
-const totalCarrinhoElement = document.getElementById("total-carrito");
-const contadorCarrinhoElement = document.getElementById("contador-carrito");
+const contenedorProductosNuevaColeccion = document.querySelector("#contenedor-productos-nueva-coleccion");
+const contenedorProductosKids = document.querySelector("#contenedor-productos-kids")
+const listaCarrito = document.querySelector("#lista-carrito");
+const totalCarritoElement = document.querySelector("#total-carrito");
+const contadorCarritoElement = document.querySelector("#contador-carrito");
 
 
 /* ----------------------------------------------------------
    2. FUNCIONES AUXILIARES
 -----------------------------------------------------------*/
 
-const formatarPreco = (centavos) => {
+const formatarPrecio = (centavos) => {
     return (centavos / 100).toLocaleString("es-AR", {
         style: "currency",
         currency: "ARS"
     });
 };
 
-const salvarCarrinho = () => {
+const salvarCarrito = () => {
     localStorage.setItem("carritoEcommerce", JSON.stringify(carrito));
 };
 
@@ -37,29 +31,33 @@ const salvarCarrinho = () => {
    3. RENDERIZAR PRODUCTOS
 -----------------------------------------------------------*/
 
-function renderizarProdutos() {
-    contenedorProductos.innerHTML = "";
+async function renderizarProductosNuevaColeccion() {
+    contenedorProductosNuevaColeccion.innerHTML = "";
 
-    productosNuevos.forEach(prod => {
-        const card = document.createElement("div");
-        card.classList.add("col-3", "card", "border", "border-0", "mb-4");
-        card.id = `prod-${prod.id}`;
+    try {
+        const response = await fetch("../asets/productos/nueva_coleccion.json");
+        const productosNuevaColeccion = await response.json();
 
-        const botonesTalle = prod.talle
+        productosNuevaColeccion.forEach(producto => {
+            const cardProductoNuevaColeccion = document.createElement("div");
+            cardProductoNuevaColeccion.classList.add("col-3", "card", "border", "border-0", "mb-4");
+            cardProductoNuevaColeccion.id = `prod-${producto.id}`;
+
+            const botonesTalle = producto.talle
             .map(t => `<button class="talle-btn btn btn-outline-dark">${t}</button>`)
             .join("");
 
-        card.innerHTML = `
+            cardProductoNuevaColeccion.innerHTML = `
             <div class="imagen-rapper position-relative">
-                <img src="${prod.imagen}" class="imagen-tarjeta card-img-top img-fluid" alt="${prod.nombre}">
+                <img src="${producto.imagen}" class="imagen-tarjeta card-img-top img-fluid" alt="${producto.nombre}">
                 <div class="btn-group btn-group-sm position-absolute bottom-0 start-50 translate-middle p-2 botones-talle">
                     ${botonesTalle}
                 </div>
             </div>
 
             <div class="card-body">
-                <h6 class="card-title">${prod.nombre}</h6>
-                <p class="card-text">${formatarPreco(prod.preco)}</p>
+                <h6 class="card-title">${producto.nombre}</h6>
+                <p class="card-text">${formatarPrecio(producto.precio)}</p>
             </div>
 
             <div class="d-flex justify-content-start p-2 pt-0 m-0">
@@ -69,16 +67,66 @@ function renderizarProdutos() {
             </div>
         `;
 
-        contenedorProductos.appendChild(card);
-    });
-}
+        contenedorProductosNuevaColeccion.appendChild(cardProductoNuevaColeccion);
+        });
+
+
+    } catch(error){
+
+    };
+};
+
+async function renderizarProductosKids() {
+    contenedorProductosKids.innerHTML = "";
+
+    try {
+        const response = await fetch("../asets/productos/kids.json");
+        const productosKids = await response.json();
+
+        productosKids.forEach(producto => {
+            const cardProductoKids = document.createElement("div");
+            cardProductoKids.classList.add("col-3", "card", "border", "border-0", "mb-4");
+            cardProductoKids.id = `prod-${producto.id}`;
+
+            const botonesTalle = producto.talle
+            .map(t => `<button class="talle-btn btn btn-outline-dark">${t}</button>`)
+            .join("");
+
+            cardProductoKids.innerHTML = `
+            <div class="imagen-rapper position-relative">
+                <img src="${producto.imagen}" class="imagen-tarjeta card-img-top img-fluid" alt="${producto.nombre}">
+                <div class="btn-group btn-group-sm position-absolute bottom-0 start-50 translate-middle p-2 botones-talle">
+                    ${botonesTalle}
+                </div>
+            </div>
+
+            <div class="card-body">
+                <h6 class="card-title">${producto.nombre}</h6>
+                <p class="card-text">${formatarPrecio(producto.precio)}</p>
+            </div>
+
+            <div class="d-flex justify-content-start p-2 pt-0 m-0">
+                <button class="btn btn-dark btn-sm agregar-carrito" disabled>
+                    Añadir al Carrito
+                </button>
+            </div>
+        `;
+
+        contenedorProductosKids.appendChild(cardProductoKids);
+        });
+
+
+    } catch(error){
+
+    };
+};
 
 
 /* ----------------------------------------------------------
    4. EVENTOS SOBRE PRODUCTOS
 -----------------------------------------------------------*/
 
-contenedorProductos.addEventListener("click", (e) => {
+contenedorProductosNuevaColeccion.addEventListener("click", (e) => {
     const btn = e.target;
     const card = btn.closest(".card");
     if (!card) return;
@@ -170,7 +218,7 @@ function removerItem(idUnico) {
    6. EVENTO DEL OFFCANVAS
 -----------------------------------------------------------*/
 
-listaCarrinho.addEventListener("click", (e) => {
+listaCarrito.addEventListener("click", (e) => {
     const btn = e.target;
 
     if (btn.classList.contains("btn-aumentar")) {
@@ -191,8 +239,8 @@ listaCarrinho.addEventListener("click", (e) => {
    7. RENDERIZAR CARRITO
 -----------------------------------------------------------*/
 
-function renderizarCarrinho() {
-    listaCarrinho.innerHTML = "";
+function renderizarCarrito() {
+    listaCarrito.innerHTML = "";
     let subtotal = 0;
 
     if (carrito.length === 0) {
@@ -242,6 +290,7 @@ function renderizarCarrinho() {
    8. INICIALIZACIÓN
 -----------------------------------------------------------*/
 
-renderizarProdutos();
-renderizarCarrinho();
-actualizarContadorCarrinho();
+renderizarProductosNuevaColeccion();
+renderizarProductosKids()
+renderizarCarrito();
+actualizarContadorCarrito();
