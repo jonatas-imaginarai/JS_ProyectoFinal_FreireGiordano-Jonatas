@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/* --- Header Tipografia --- */
+header {
+    background-color: #fff;
+    height: 50px;
+}
+
+.navbar {
+    align-items: center;
+}
+
+.navbar-brand {
+    font-family: "Josefin Sans", sans-serif;
+    transition: 0.15s;
+    align-items: center;
+}
+
+.navbar-brand:hover {
+    color: oklch(82.7% 0.119 306.383);
+}
+
+/* --- Header Carrito --- */
+.icono-carrito {
+    width: 22px;
+}
+
+.carrito-div button {
+    background-color: inherit;
+}
+
+/* --- Hero Section --- */
+
+.imagen-hero-section {
+    border-radius: 2px;
+    height: calc(100vh - 70px);
+}
+
+h1 {
+    align-items: center;
+    justify-content: center;
+}
+
+.boton-hero-cta {
+    background-color: oklch(82.7% 0.119 306.383);
+    width: fit-content;
+    border-radius: 2px;
+    padding-top: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.boton-hero-cta:hover {
+    background-color: oklch(78.517% 0.13477 307.239);
+}
+
+.btn.boton-hero-cta:active {
+    background-color: oklch(88.762% 0.0714 307.961);
+}
+
+.logo-hero {
+    font-family: "Gantari", sans-serif;
+    font-weight: 400;
+    color: oklch(36.386% 0.00004 271.152);
+    letter-spacing: 30px;
+    text-align: center;
+}
+
+.bolita-carrito {
+    /* Define um tamanho fixo pequeno, transformando-o em um círculo */
+    width: 15px; /* Ajuste o tamanho conforme a necessidade */
+    height: 15px; /* Deve ser igual ao width */
+    padding: 0; /* Remove o padding padrão do badge do Bootstrap */
+    font-size: 10px; /* Reduz o tamanho da fonte */
+    display: flex; /* Usamos flex para centrar o número '0' */
+    align-items: center;
+    justify-content: center;
+    /* Ajuste o posicionamento para que fique mais próximo do ícone, se necessário */
+    /* Ex: Se ficar muito para fora, use right: -5px; bottom: -5px; */
+}
+
+/* --- Cards News --- */
+
+/* .tipografia-tarjetas {
+    font-family: "Josefina Sans", sans-serif;
+    font-style: bold;
+} */
+
+.imagen-rapper {
+    overflow: hidden;
+}
+
+.botones-talle {
+    opacity: 0;
+    transition: 0.2s ease;
+    background-color: #fff;
+    border: none !important;
+    width: 96%;
+    border-radius: 0;
+    padding: 4px;
+}
+
+.talle-btn {
+    border: none;
+    font-size: 0.8rem;
+    color: oklch(36.386% 0.00004 271.152);
+}
+
+.talle-btn:hover {
+    background-color: oklch(64.766% 0.18262 305.756);
+}
+
+.imagen-rapper:hover .botones-talle {
+    opacity: 1;
+}
+
+.contenedor-grilla {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.imagen-tarjeta {
+    border-radius: 2px;
+}
+
+.ropas-grilla {
+    padding-left: 0;
+}
+
+.contenedor-etiqueta {
+    padding: 0.2rem;
+    align-items: center;
+}
+
+.etiqueta-section {
+    background-color: oklch(93.849% 0.09788 156.52);
+    width: fit-content;
+    align-items: center;
+    padding: 4px;
+    border-radius: 2px;
+}
+
+.contenedor-membresia {
+    height: 300px;
+    border-radius: 2px;
+}
+
+.section-membresia {
+    border-radius: 2px;
+}
+
+.imagen-section-membresia {
+    border-radius: 2px;
+    height: 100%;
+}
+
+.texto-membresia {
+    font-family: "Gantari", sans-serif;
+    font-weight: 400;
+    color: oklch(36.386% 0.00004 271.152);
+}
+
+.contenedor-valores {
+    height: 300px;
+    border-radius: 2px;
+}
+
+.section-valores {
+    border-radius: 2px;
+}
+
+.imagen-section-valores {
+    border-radius: 2px;
+    height: 100%;
+}
+
+.texto-valores {
+    font-family: "Gantari", sans-serif;
+    font-weight: 400;
+    color: oklch(36.386% 0.00004 271.152);
+}
+
+.foot {
+    background-color: #fff;
+    height: 50px;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.foot a {
+    color: oklch(36.386% 0.00004 271.152);
+    transition: 0.2s ease;
+}
+
+.foot a:hover {
+    color: oklch(78.517% 0.13477 307.239);
+}
+
+.foot a:active {
+    color: oklch(88.762% 0.0714 307.961);
+}
+
+.btn.agregar-carrito {
+  border-radius: 2px;
+  font-size: 0.85rem;
+  font-weight: 300;
+  padding: 6px 16px;
+  transition: all 0.25s ease;
+  font-family: "Gantari", sans-serif;
+}
+
+.btn.agregar-carrito:hover {
+  background-color: oklch(78.517% 0.13477 307.239);
+  color: #fff;
+}
+
+.btn.agregar-carrito:active {
+    background-color: oklch(88.762% 0.0714 307.961);
+}
+
+.bolita-carrito {
+    background-color: oklch(93.849% 0.09788 156.52);
+    color: oklch(36.386% 0.00004 271.152);
+    font-size: 0.6rem;
+}
+
+#total-carrito {
+    color: oklch(36.386% 0.00004 271.152);
+}
+
+.btn.boton-finalizar-compra {
+    color: oklch(36.386% 0.00004 271.152);
+    border-color: oklch(36.386% 0.00004 271.152);
+    font-family: "Gantari", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+
+.btn.boton-finalizar-compra:hover {
+    background-color: oklch(78.517% 0.13477 307.239);
+    color: #fff;
+}
+
+.btn.boton-finalizar-compra:active {
+    background-color: oklch(88.762% 0.0714 307.961);
+}
