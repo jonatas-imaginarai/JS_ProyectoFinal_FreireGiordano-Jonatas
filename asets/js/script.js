@@ -35,7 +35,7 @@ async function renderizarProductosNuevaColeccion() {
     contenedorProductosNuevaColeccion.innerHTML = "";
 
     try {
-        const response = await fetch("../asets/productos/nueva_coleccion.json");
+        const response = await fetch("./asets/productos/nueva_coleccion.json");
         const productosNuevaColeccion = await response.json();
 
         productosNuevaColeccion.forEach(producto => {
@@ -72,7 +72,7 @@ async function renderizarProductosNuevaColeccion() {
 
 
     } catch(error){
-
+        console.error("Error", error);
     };
 };
 
@@ -80,7 +80,7 @@ async function renderizarProductosKids() {
     contenedorProductosKids.innerHTML = "";
 
     try {
-        const response = await fetch("../asets/productos/kids.json");
+        const response = await fetch("./asets/productos/kids.json");
         const productosKids = await response.json();
 
         productosKids.forEach(producto => {
@@ -117,7 +117,7 @@ async function renderizarProductosKids() {
 
 
     } catch(error){
-
+        console.error("Error", error);
     };
 };
 
