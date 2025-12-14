@@ -245,3 +245,7 @@ h1 {
 .btn.boton-finalizar-compra:active {
     background-color: oklch(88.762% 0.0714 307.961);
 }
+
+#contador-carrito {
+    background-color:  oklch(78.517% 0.13477 307.239);
+}
